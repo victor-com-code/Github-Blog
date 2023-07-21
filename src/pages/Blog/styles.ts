@@ -5,10 +5,14 @@ export const BlogContainer = styled.div`
   max-width: 864px;
   margin: 4rem auto;
   padding: 0 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
 `
 
 export const ProfileContainer = styled.div`
-  transform: translateY(-9rem);
+  margin-top: -9rem;
   background: ${(props) => props.theme['base-profile']};
   box-shadow: 0px 2px 28px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -81,4 +85,65 @@ export const ProfileInfo = styled.div`
       color: ${(props) => props.theme['base-label']};
     }
   }
+`
+
+export const PublicationsContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+`
+
+export const PublicationsList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  padding: 2.5rem 0;
+`
+
+export const PublicationCard = styled.div`
+  background: ${(props) => props.theme['base-post']};
+  padding: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+
+  transition: border-color 0.4s ease;
+
+  &:hover {
+    border-color: ${(props) => props.theme['base-label']};
+  }
+`
+
+export const PublicationInfo = styled.div`
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+
+  h2 {
+    flex: 1;
+    color: ${(props) => props.theme['base-title']};
+  }
+
+  span {
+    font-size: 0.875rem;
+    color: ${(props) => props.theme['base-span']};
+  }
+`
+
+export const PublicationContent = styled.div`
+  margin-top: 1.25rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  color: ${(props) => props.theme['base-text']};
 `
