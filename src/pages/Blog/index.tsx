@@ -19,46 +19,39 @@ import {
   PublicationsList,
 } from './styles'
 import { SearchForm } from './components/SearchForm'
+import { useContext } from 'react'
+import { ProfileContext } from '../../contexts/ProfileContext'
 
 export function Blog() {
+  const { profile } = useContext(ProfileContext)
+
   return (
     <BlogContainer>
       <ProfileContainer>
-        <img src="http://github.com/victor-com-code.png" alt="" />
+        <img src={profile.avatar_url} alt="" />
         <ProfileContent>
           <header>
-            <TitleL>Victor Eduardo</TitleL>
-            <a href="" target="_blank">
+            <TitleL>{profile.name}</TitleL>
+            <a href={profile.html_url} target="_blank" rel="noreferrer">
               Github
               <ArrowSquareUpRight size={16} />
             </a>
           </header>
           <ProfileDescription>
-            <TextM>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-              neque non corporis quam laborum sit esse ratione distinctio
-              fugiat! Quibusdam quaerat ullam magni adipisci, aliquid ducimus
-              vitae inventore reprehenderit dignissimos! Lorem, ipsum dolor sit
-              amet consectetur adipisicing elit. Eum neque non corporis quam
-              laborum sit esse ratione distinctio fugiat! Quibusdam quaerat
-              ullam magni adipisci, aliquid ducimus vitae inventore
-              reprehenderit dignissimos! Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Eum neque non corporis quam laborum sit esse
-              ratione distinctio fugiat! Quibusdam quaerat ullam magni adipisci,
-              aliquid ducimus vitae inventore reprehenderit dignissimos!
-            </TextM>
+            <TextM>{profile.bio}</TextM>
           </ProfileDescription>
           <ProfileInfo>
             <span>
               <GithubLogo size={18} weight="fill" />
-              victor-com-code
+              {profile.login}
             </span>
             <span>
               <Buildings size={18} weight="fill" />
-              Freelancer
+              {profile.company}
             </span>
             <span>
-              <Users size={18} weight="fill" />0 seguidores
+              <Users size={18} weight="fill" />
+              {profile.followers} seguidores
             </span>
           </ProfileInfo>
         </ProfileContent>

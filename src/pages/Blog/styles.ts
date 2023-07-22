@@ -32,6 +32,7 @@ export const ProfileContainer = styled.div`
 export const ProfileContent = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 
   header {
     display: flex;
