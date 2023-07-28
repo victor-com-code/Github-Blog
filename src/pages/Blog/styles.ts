@@ -107,8 +107,9 @@ export const PublicationsList = styled.div`
   padding: 2.5rem 0;
 `
 
-export const PublicationCard = styled.div`
+export const PublicationCard = styled.a`
   background: ${(props) => props.theme['base-post']};
+  text-decoration: none;
   padding: 2rem;
   border-radius: 10px;
   cursor: pointer;

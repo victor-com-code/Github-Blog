@@ -4,6 +4,7 @@ import { GlobalTheme } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { ProfileContextProvider } from './contexts/ProfileContext'
+import { IssuesContextProvider } from './contexts/IssuesContext'
 
 export function App() {
   return (
@@ -12,7 +13,9 @@ export function App() {
 
       <BrowserRouter>
         <ProfileContextProvider>
-          <Router />
+          <IssuesContextProvider>
+            <Router />
+          </IssuesContextProvider>
         </ProfileContextProvider>
       </BrowserRouter>
     </ThemeProvider>
