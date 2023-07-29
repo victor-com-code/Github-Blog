@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import { IssuesContext } from '../../contexts/IssuesContext'
 import { Profile } from './components/Profile'
 import { dateRelativeToNow } from '../../utils/formatter'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 export function Blog() {
   const { issues } = useContext(IssuesContext)
@@ -37,7 +38,10 @@ export function Blog() {
                   <TitleM>{item.title}</TitleM>
                   <span>{dateRelativeToNow(new Date(item.created_at))}</span>
                 </PublicationInfo>
-                <PublicationContent>{item.body}</PublicationContent>
+                <PublicationContent>
+                  <ReactMarkdown>{item.body}</ReactMarkdown>
+                  {item.body}
+                </PublicationContent>
               </PublicationCard>
             )
           })}

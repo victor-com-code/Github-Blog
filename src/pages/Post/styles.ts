@@ -72,7 +72,22 @@ export const PostInfo = styled.div`
 export const PostContent = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.875rem;
 
   padding: 2.5rem 2rem;
+
+  h3 {
+    color: ${(props) => props.theme.blue};
+    text-decoration: underline;
+  }
+
+  pre {
+    background: ${(props) => props.theme['base-post']};
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    border-radius: 2px;
+  }
 `

@@ -27,6 +27,7 @@ export const PublicationsList = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  justify-content: center;
 
   padding: 2.5rem 0;
 `
@@ -70,6 +71,7 @@ export const PublicationContent = styled.div`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  width: 20rem;
 
   color: ${(props) => props.theme['base-text']};
 `
