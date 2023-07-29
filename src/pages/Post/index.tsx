@@ -17,6 +17,7 @@ import { useContext, useEffect } from 'react'
 import { IssuesContext } from '../../contexts/IssuesContext'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { NavLink, useParams } from 'react-router-dom'
+import { dateRelativeToNow } from '../../utils/formatter'
 
 export function Post() {
   const { issuePost, getIssue } = useContext(IssuesContext)
@@ -25,7 +26,7 @@ export function Post() {
 
   useEffect(() => {
     getIssue(Number(issueNumber))
-  }, [])
+  }, [issueNumber])
 
   return (
     <PostContainer>
@@ -49,7 +50,8 @@ export function Post() {
           </span>
           <span>
             <CalendarCheck size={18} weight="fill" />
-            {issuePost.created_at}
+            {issuePost.created_at &&
+              dateRelativeToNow(new Date(issuePost.created_at))}
           </span>
           <span>
             <ChatCircleDots size={18} weight="fill" />

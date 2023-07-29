@@ -12,6 +12,7 @@ import { SearchForm } from './components/SearchForm'
 import { useContext } from 'react'
 import { IssuesContext } from '../../contexts/IssuesContext'
 import { Profile } from './components/Profile'
+import { dateRelativeToNow } from '../../utils/formatter'
 
 export function Blog() {
   const { issues } = useContext(IssuesContext)
@@ -34,7 +35,7 @@ export function Blog() {
               <PublicationCard key={item.id} to={`/post/${item.number}`}>
                 <PublicationInfo>
                   <TitleM>{item.title}</TitleM>
-                  <span>{item.created_at}</span>
+                  <span>{dateRelativeToNow(new Date(item.created_at))}</span>
                 </PublicationInfo>
                 <PublicationContent>{item.body}</PublicationContent>
               </PublicationCard>
