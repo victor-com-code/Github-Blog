@@ -13,47 +13,53 @@ import {
   PostLinks,
 } from './styles'
 import { TitleL } from '../../styles/titles'
+import { useContext, useEffect } from 'react'
+import { IssuesContext } from '../../contexts/IssuesContext'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { NavLink, useParams } from 'react-router-dom'
 
 export function Post() {
+  const { issuePost, getIssue } = useContext(IssuesContext)
+
+  const { issueNumber } = useParams()
+
+  useEffect(() => {
+    getIssue(Number(issueNumber))
+  }, [])
+
   return (
     <PostContainer>
       <PostHeader>
         <PostLinks>
-          <a href="">
+          <NavLink to={'/'}>
             <ArrowLeft size={16} /> voltar
-          </a>
-          <a href="" target="_blank">
+          </NavLink>
+          <a href={issuePost.html_url} target="_blank" rel="noreferrer">
             ver no github
             <ArrowSquareUpRight size={16} />
           </a>
         </PostLinks>
 
-        <TitleL>JavaScript data types and data structures</TitleL>
+        <TitleL>{issuePost.title}</TitleL>
 
         <PostInfo>
           <span>
             <GithubLogo size={18} weight="fill" />
-            victor-com-code
+            {issuePost.user?.login}
           </span>
           <span>
             <CalendarCheck size={18} weight="fill" />
-            Há 1 dia
+            {issuePost.created_at}
           </span>
           <span>
-            <ChatCircleDots size={18} weight="fill" />5 comentários
+            <ChatCircleDots size={18} weight="fill" />
+            {issuePost.comments} comentários
           </span>
         </PostInfo>
       </PostHeader>
 
       <PostContent>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in JavaScript and what properties
-        they have. These can be used to build other data structures. Wherever
-        possible, comparisons with other languages are drawn. Dynamic typing
-        JavaScript is a loosely typed and dynamic language. Variables in
-        JavaScript are not directly associated with any particular value type,
-        and any variable can be assigned (and re-assigned) values of all types:
+        <ReactMarkdown>{issuePost.body}</ReactMarkdown>
       </PostContent>
     </PostContainer>
   )

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 
 export const BlogContainer = styled.div`
@@ -30,7 +31,7 @@ export const PublicationsList = styled.div`
   padding: 2.5rem 0;
 `
 
-export const PublicationCard = styled.a`
+export const PublicationCard = styled(NavLink)`
   background: ${(props) => props.theme['base-post']};
   text-decoration: none;
   padding: 2rem;

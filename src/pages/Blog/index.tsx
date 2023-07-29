@@ -31,7 +31,7 @@ export function Blog() {
         <PublicationsList>
           {issues.map((item) => {
             return (
-              <PublicationCard key={item.id} href="">
+              <PublicationCard key={item.id} to={`/post/${item.number}`}>
                 <PublicationInfo>
                   <TitleM>{item.title}</TitleM>
                   <span>{item.created_at}</span>
