@@ -11,16 +11,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.1",
     "@phosphor-icons/react": "^2.0.10",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.2",
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.14.1",
     "scheduler": "^0.23.0",
     "styled-components": "^6.0.4",
-    "use-context-selector": "^1.4.1"
+    "use-context-selector": "^1.4.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@octokit/types": "^11.1.0",

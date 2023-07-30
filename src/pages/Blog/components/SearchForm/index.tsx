@@ -2,13 +2,26 @@ import { ChangeEvent } from 'react'
 import { SearchFormContainer } from './styles'
 import { IssuesContext } from '../../../../contexts/IssuesContext'
 import { useContextSelector } from 'use-context-selector'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const searchFormSchema = z.object({
+  query: z.string(),
+})
+
+type SearchFormInputs = z.infer<typeof searchFormSchema>
 
 export function SearchForm() {
   const fetchIssues = useContextSelector(IssuesContext, (context) => {
     return context.fetchIssues
   })
 
-  function searchIssues(event: ChangeEvent<HTMLInputElement>) {
+  const { register } = useForm<SearchFormInputs>({
+    resolver: zodResolver(searchFormSchema),
+  })
+
+  async function handleSearchIssues(event: ChangeEvent<HTMLInputElement>) {
     fetchIssues(event.target.value)
   }
 
@@ -17,7 +30,11 @@ export function SearchForm() {
       <input
         type="text"
         placeholder="Buscar conteúdo"
-        onChange={searchIssues}
+        {...register('query', {
+          onChange: (e) => {
+            handleSearchIssues(e)
+          },
+        })}
       />
     </SearchFormContainer>
   )
