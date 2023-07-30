@@ -4,7 +4,7 @@ import {
   Buildings,
   Users,
 } from '@phosphor-icons/react'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { ProfileContext } from '../../../../contexts/ProfileContext'
 import { TextM } from '../../../../styles/text'
 import { TitleL } from '../../../../styles/titles'
@@ -16,7 +16,9 @@ import {
 } from './styles'
 
 export function Profile() {
-  const { profile } = useContext(ProfileContext)
+  const profile = useContextSelector(ProfileContext, (context) => {
+    return context.profile
+  })
 
   return (
     <ProfileContainer>

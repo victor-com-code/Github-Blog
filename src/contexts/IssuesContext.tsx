@@ -1,7 +1,8 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 
 import { Endpoints } from '@octokit/types'
+import { createContext } from 'use-context-selector'
 
 type Issues = Endpoints['GET /search/issues']['response']['data']['items']
 
@@ -28,7 +29,7 @@ export function IssuesContextProvider({
 
   const [issuePost, setIssuePost] = useState<IssuePost>({} as IssuePost)
 
-  async function fetchIssues(query = '') {
+  const fetchIssues = useCallback(async (query = '') => {
     const response = await api.get('search/issues', {
       params: {
         q: `repo:victor-com-code/github-blog is:issue ${query} in:title in:body`,
@@ -36,19 +37,19 @@ export function IssuesContextProvider({
     })
 
     setIssues(response.data.items)
-  }
+  }, [])
 
-  async function getIssue(issueNumber: number): Promise<void> {
+  const getIssue = useCallback(async (issueNumber: number) => {
     const response = await api.get(
       `repos/victor-com-code/github-blog/issues/${issueNumber}`,
     )
 
     setIssuePost(response.data)
-  }
+  }, [])
 
   useEffect(() => {
     fetchIssues()
-  }, [])
+  }, [fetchIssues])
 
   return (
     <IssuesContext.Provider

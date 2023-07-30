@@ -9,14 +9,16 @@ import {
   PublicationsList,
 } from './styles'
 import { SearchForm } from './components/SearchForm'
-import { useContext } from 'react'
 import { IssuesContext } from '../../contexts/IssuesContext'
 import { Profile } from './components/Profile'
 import { dateRelativeToNow } from '../../utils/formatter'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { useContextSelector } from 'use-context-selector'
 
 export function Blog() {
-  const { issues } = useContext(IssuesContext)
+  const issues = useContextSelector(IssuesContext, (context) => {
+    return context.issues
+  })
 
   return (
     <BlogContainer>
@@ -40,7 +42,6 @@ export function Blog() {
                 </PublicationInfo>
                 <PublicationContent>
                   <ReactMarkdown>{item.body}</ReactMarkdown>
-                  {item.body}
                 </PublicationContent>
               </PublicationCard>
             )

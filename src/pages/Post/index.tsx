@@ -13,14 +13,21 @@ import {
   PostLinks,
 } from './styles'
 import { TitleL } from '../../styles/titles'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { IssuesContext } from '../../contexts/IssuesContext'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { NavLink, useParams } from 'react-router-dom'
 import { dateRelativeToNow } from '../../utils/formatter'
+import { useContextSelector } from 'use-context-selector'
 
 export function Post() {
-  const { issuePost, getIssue } = useContext(IssuesContext)
+  const getIssue = useContextSelector(IssuesContext, (context) => {
+    return context.getIssue
+  })
+
+  const issuePost = useContextSelector(IssuesContext, (context) => {
+    return context.issuePost
+  })
 
   const { issueNumber } = useParams()
 
