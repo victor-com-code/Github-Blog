@@ -24,6 +24,12 @@ export const PostHeader = styled.header`
     color: ${(props) => props.theme['base-title']};
     margin: 1.25rem 0 0.5rem;
   }
+
+  @media (max-width: 480px) {
+    h1 {
+      text-align: center;
+    }
+  }
 `
 
 export const PostLinks = styled.nav`
@@ -67,6 +73,16 @@ export const PostInfo = styled.div`
       color: ${(props) => props.theme['base-label']};
     }
   }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      gap: 0;
+    }
+  }
 `
 
 export const PostContent = styled.section`
@@ -89,5 +105,13 @@ export const PostContent = styled.section`
     gap: 0.5rem;
 
     border-radius: 2px;
+  }
+
+  a {
+    color: ${(props) => props.theme['base-span']};
+  }
+
+  img {
+    width: 100%;
   }
 `

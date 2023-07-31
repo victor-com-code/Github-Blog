@@ -22,4 +22,10 @@ export const GlobalTheme = createGlobalStyle`
     font: 400 1rem Nunito, sans-serif;
     line-height: 1.6;
   }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 87.5%;
+    }
+  }
 `

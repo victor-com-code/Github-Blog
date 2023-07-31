@@ -30,6 +30,10 @@ export const PublicationsList = styled.div`
   justify-content: center;
 
   padding: 2.5rem 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const PublicationCard = styled(NavLink)`
@@ -46,15 +50,19 @@ export const PublicationCard = styled(NavLink)`
   &:hover {
     border-color: ${(props) => props.theme['base-label']};
   }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `
 
 export const PublicationInfo = styled.div`
   display: flex;
   align-items: start;
+  justify-content: space-between;
   gap: 1rem;
 
   h2 {
-    flex: 1;
     color: ${(props) => props.theme['base-title']};
   }
 
